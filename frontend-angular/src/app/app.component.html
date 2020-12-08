@@ -1,0 +1,70 @@
+<div class="container container-wrapper">
+    <div style="    padding: 3rem;
+  background: white;
+  border-radius: 1rem;min-width: 40%;">
+        <h4 class="text-center"> SIGN-UP FORM </h4>
+
+        <form name="user" autocomplete="off" [formGroup]="validationForm">
+            <div class="form-group">
+                <label for="name">Email *</label>
+                <input type="text" class="form-control" formControlName="email" id="email" name="email" placeholder="email">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error">
+                    <div *ngIf="email?.errors">
+                        Valid emailId is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">User Name</label>
+                <input type="text" class="form-control" id="username" name="username" formControlName="username" placeholder="username">
+                <div *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)" class="error">
+                    <div *ngIf="userName?.errors?.pattern">
+                        Username not valid.
+                    </div>
+                    <div *ngIf="userName?.errors?.required">
+                        User name is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" placeholder="password">
+                <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error">
+                    <div *ngIf="password?.errors?.required">
+                        Password is required.
+                    </div>
+                    <div *ngIf="password?.errors?.minlength">
+                        Password should be greater than 8 characters.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" placeholder="phoneNumber">
+                <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="error">
+                    <div *ngIf="phoneNumber?.errors.pattern">
+                        Phone Number not valid.
+                    </div>
+                    <div *ngIf="phoneNumber?.errors?.required">
+                        Phone Number is required.
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="d-flex justify-content-center w-100">
+                <button type="submit" class="btn btn-primary submit-button" [disabled]="(this.validationForm.invalid)" (click)="saveUserData()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
